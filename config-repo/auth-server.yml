@@ -1,4 +1,4 @@
 security:
   oauth2:
-    redirect-uri: http://localhost:9000
-    issuer-uri: http://localhost:9000
+    redirect-uri: http://localhost:8080
+    issuer-uri: http://localhost:8080/auth-server
