@@ -74,7 +74,7 @@ public class AuthorizationServerConfig {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
-        RegisteredClient client1 = RegisteredClient.withId(UUID.randomUUID().toString())
+        RegisteredClient defaultClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("foo-client")
                 .clientSecret("{noop}foo-secret")
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
@@ -89,7 +89,7 @@ public class AuthorizationServerConfig {
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(false).build())
                 .build();
 
-        return new InMemoryRegisteredClientRepository(client1);
+        return new InMemoryRegisteredClientRepository(defaultClient);
     }
 
     @Bean
