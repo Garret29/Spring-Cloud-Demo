@@ -20,6 +20,9 @@
         <module>ConfigService</module>
         <module>EurekaService</module>
         <module>ApiGatewayService</module>
+        <module>AuthServer</module>
+        <module>FooApiService</module>
+        <module>BarApiService</module>
     </modules>
 
     <properties>
