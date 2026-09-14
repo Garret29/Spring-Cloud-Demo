@@ -4,7 +4,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(name = "bar-service")
-public interface BarServiceClient {
+public interface FeignBarServiceClient extends BarService {
+    @Override
     @GetMapping("/api/bar")
     String getBar();
 }

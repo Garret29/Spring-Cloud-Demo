@@ -1,0 +1,6 @@
+spring:
+  artemis:
+    mode: embedded
+    embedded:
+      enabled: true
+      queues: bar.queue
