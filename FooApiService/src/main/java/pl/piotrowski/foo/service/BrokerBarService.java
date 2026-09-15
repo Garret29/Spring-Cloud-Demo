@@ -4,13 +4,11 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.TextMessage;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Component;
 
-@Component
-public class BrokerBarServiceClient implements BarService {
+public class BrokerBarService implements BarService {
     private final JmsTemplate jmsTemplate;
 
-    public BrokerBarServiceClient(JmsTemplate jmsTemplate) {
+    public BrokerBarService(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
     }
 
@@ -20,6 +18,10 @@ public class BrokerBarServiceClient implements BarService {
                 "bar.queue",
                 session -> session.createTextMessage("getBar")
         );
+
+        if (replyMessage == null) {
+            throw new RuntimeException("bar failed");
+        }
 
         try {
             return (replyMessage instanceof TextMessage tm) ? tm.getText() : null;
